@@ -24,7 +24,7 @@ export default function Child(props) {
 
   getData(props.list).then(
     function (value) {
-      setUsers(value.toString());
+      //setUsers(value.toString());
       //console.log('pro', value);
     },
     function (error) {
