@@ -1,0 +1,1 @@
+export const URL_GET_ALL_POST='https://jsonplaceholder.typicode.com/posts'
