@@ -1,8 +1,11 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import './style.css';
 import { useSelector } from 'react-redux';
-
+import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
 export default function Child(props) {
+
+  const data = useSelector(selectPost);
+
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [users, setUsers] = useState([]);
@@ -22,9 +25,9 @@ export default function Child(props) {
     });
   }
 
-  getData(props.list).then(
+  getData(data).then(
     function (value) {
-      //setUsers(value.toString());
+      setUsers(value.toString());
       //console.log('pro', value);
     },
     function (error) {

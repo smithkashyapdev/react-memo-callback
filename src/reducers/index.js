@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { URL_GET_ALL_POST } from '../utils/constants';
+import { executeRequest } from '../services/data-service';
 export const counterSlice = createSlice({
   name: 'calculator',
   initialState: {
     value: 0,
+    post: [],
   },
   reducers: {
     increment: (state) => {
@@ -20,11 +22,31 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+    fetch_post: (state, action) => {
+      //console.log('sssssssssss',JSON.stringify(action.payload))
+      state.post = action.payload;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
-export const selectCount = (state) => state.calculator.value;
+export const incrementAsync = (amount) => (dispatch) => {
+  console.log('oncrement', dispatch);
+  setTimeout(() => {
+    dispatch(incrementByAmount(amount));
+  }, 5000);
+};
 
+export const fetchAsyncPost = () => (dispatch) => {
+  console.log('oncrement', dispatch);
+  executeRequest(URL_GET_ALL_POST).then((data) => {
+    dispatch(fetch_post(data));
+    //console.log(JSON.stringify(data))
+  });
+};
+
+// Action creators are generated for each case reducer function
+export const { increment, decrement, incrementByAmount, fetch_post } =
+  counterSlice.actions;
+export const selectCount = (state) => state.calculator.value;
+export const selectPost = (state) => state.calculator.post;
 export default counterSlice.reducer;

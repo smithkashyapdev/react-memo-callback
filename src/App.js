@@ -1,13 +1,12 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import Child from './Child';
 import './style.css';
-import { URL_GET_ALL_POST } from './utils/constants';
-import { executeRequest } from './services/data-service';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment,selectCount } from './reducers/index';
+import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
 
 export default function App() {
-  const [data, setData] = useState([]);
+
   
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
@@ -28,11 +27,10 @@ export default function App() {
 
   useEffect(() => {
     console.log('useEffect');
-    executeRequest(URL_GET_ALL_POST).then((data) => {
-      setData(data);
-      //console.log(JSON.stringify(data))
-    });
+    dispatch(fetchAsyncPost())
   }, []);
+
+  
 
   return (
     <div>
@@ -41,7 +39,6 @@ export default function App() {
         detail="B.tech"
         call={callback}
         memo={memo}
-        list={data}
       ></Child>
       <button   onClick={() => dispatch(increment())}>increment</button>
       <button
@@ -51,6 +48,11 @@ export default function App() {
       >
         decrement
       </button>
+      <button
+          onClick={() => dispatch(incrementAsync(Number(5) || 0))}
+        >
+          Add Async
+        </button>
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
       <a>{count}</a>
