@@ -25,14 +25,14 @@ export default function Child(props) {
   getData(props.list).then(
     function (value) {
       setUsers(value.toString());
-      console.log('pro', value);
+      //console.log('pro', value);
     },
     function (error) {
       /* code if some error */
     }
   );
 
-  console.log('again render');
+  //console.log('again render');
   return (
     <div>
       <h1>{props.name}</h1>
