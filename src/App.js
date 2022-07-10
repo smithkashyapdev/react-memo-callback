@@ -3,19 +3,21 @@ import Child from './Child';
 import './style.css';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
+// import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
+
+import { getPosts } from "./saga/post/actions";
 
 export default function App() {
 
   
-  const count = useSelector(selectCount);
+  //const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const callback = useCallback(
     (a, b) => {
       console.log('called it');
       //setCount(a + b);
     },
-    [count]
+    []
   );
 
 
@@ -27,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     console.log('useEffect');
-    dispatch(fetchAsyncPost())
+    dispatch(getPosts())
   }, []);
 
   
@@ -55,7 +57,7 @@ export default function App() {
         </button>
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
-      <a>{count}</a>
+     
     </div>
   );
 }

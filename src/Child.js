@@ -1,18 +1,20 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import './style.css';
 import { useSelector } from 'react-redux';
-import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
+
 export default function Child(props) {
 
-  const data = useSelector(selectPost);
+  const { posts, loadingPosts } = useSelector((state) => state);
 
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [users, setUsers] = useState([]);
+  
   const count = useSelector((state) => state.counter);
   const otherFoo = function () {
     return `bar`;
   };
+
 
   function getData(array) {
     return new Promise(function (myResolve, myReject) {
@@ -25,7 +27,7 @@ export default function Child(props) {
     });
   }
 
-  getData(data).then(
+  getData(posts).then(
     function (value) {
       setUsers(value.toString());
       //console.log('pro', value);
