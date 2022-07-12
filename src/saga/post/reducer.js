@@ -1,4 +1,10 @@
-import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL } from './actionTypes';
+import {
+  GET_POSTS,
+  GET_POSTS_SUCCESS,
+  GET_POSTS_FAIL,
+  Increment,
+  Decrement,
+} from './actionTypes';
 
 const initialState = {
   posts: [],
@@ -8,6 +14,7 @@ const initialState = {
   error: {
     message: '',
   },
+  count: 0,
 };
 
 const PostReducer = (state = initialState, action) => {
@@ -27,6 +34,18 @@ const PostReducer = (state = initialState, action) => {
         loadingPosts: false,
       };
       break;
+
+    case Increment: {
+      const count = state.count + 1;
+      state = { ...state, count };
+      break;
+    }
+
+    case Decrement: {
+      const count = state.count - 1;
+      state = { ...state, count };
+      break;
+    }
 
     default:
       state = { ...state };

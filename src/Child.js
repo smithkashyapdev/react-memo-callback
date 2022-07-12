@@ -3,18 +3,16 @@ import './style.css';
 import { useSelector } from 'react-redux';
 
 export default function Child(props) {
-
   const { posts, loadingPosts } = useSelector((state) => state);
 
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [users, setUsers] = useState([]);
-  
-  const count = useSelector((state) => state.counter);
+
+  const count = useSelector((state) => state.count);
   const otherFoo = function () {
     return `bar`;
   };
-
 
   function getData(array) {
     return new Promise(function (myResolve, myReject) {

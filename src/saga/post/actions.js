@@ -1,9 +1,22 @@
 import {
   GET_POSTS,
   GET_POSTS_SUCCESS,
-  GET_POSTS_FAIL
-} from "./actionTypes";
+  GET_POSTS_FAIL,
+  Increment,
+  Decrement,
+} from './actionTypes';
 
+export const increment = () => {
+  return {
+    type: Increment,
+  };
+};
+
+export const decrement = () => {
+  return {
+    type: Decrement,
+  };
+};
 
 export const getPosts = () => {
   return {

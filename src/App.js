@@ -5,12 +5,15 @@ import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 // import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
 
-import { getPosts } from "./saga/post/actions";
+import { getPosts,increment,decrement } from "./saga/post/actions";
 
 export default function App() {
 
   
-  //const count = useSelector(selectCount);
+  const count = useSelector((state)=>{
+    console.log(state)
+    return state.count
+  });
   const dispatch = useDispatch();
   const callback = useCallback(
     (a, b) => {
