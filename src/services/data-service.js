@@ -1,6 +1,7 @@
 export const executeRequest = async (url) => {
   const result = await fetch(url);
-  return result;
+  const data = await result.json()
+  return data;
 };
 
 export async function getApi(url) {

@@ -10,13 +10,13 @@ import {
 } from './actions';
 
 import { URL_GET_ALL_POST } from '../../utils/constants';
-import { executeRequest, getApi } from '../../services/data-service';
+import { executeRequest } from '../../services/data-service';
 
 function* onGetPosts() {
   try {
     console.log('--onGet', 'response');
-    const response = yield call(getApi(URL_GET_ALL_POST));
-    console.log('--onGet', 'response');
+    const response = yield executeRequest(URL_GET_ALL_POST);
+    console.log('--onGet', response);
     yield put(getPostsSuccess(response));
   } catch (error) {
     yield put(getPostsFail(error.response));
