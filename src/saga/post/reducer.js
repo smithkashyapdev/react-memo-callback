@@ -18,6 +18,7 @@ const initialState = {
 };
 
 const PostReducer = (state = initialState, action) => {
+  console.log('action', state);
   switch (action.type) {
     case GET_POSTS:
       state = { ...state, loadingPosts: true };
@@ -35,23 +36,11 @@ const PostReducer = (state = initialState, action) => {
       };
       break;
 
-    case Increment_Type: {
-      const count = state.count + 1;
-      state = { ...state, count };
-      break;
-    }
-
-    case Decrement_Type: {
-      const count = state.count - 1;
-      state = { ...state, count };
-      break;
-    }
-
     default:
       state = { ...state };
       break;
   }
-  console.log('reducer->',state)
+  console.log('reducer->', state);
   return state;
 };
 

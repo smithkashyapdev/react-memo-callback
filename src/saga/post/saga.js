@@ -2,12 +2,7 @@ import { takeLatest, put, call } from 'redux-saga/effects';
 
 import { GET_POSTS, Increment_Type, Decrement_Type } from './actionTypes';
 
-import {
-  getPostsSuccess,
-  getPostsFail,
-  getincrement,
-  getdecrement,
-} from './actions';
+import { getPostsSuccess, getPostsFail } from './actions';
 
 import { URL_GET_ALL_POST } from '../../utils/constants';
 import { executeRequest } from '../../services/data-service';
@@ -23,20 +18,8 @@ function* onGetPosts() {
   }
 }
 
-function* increment() {
-  console.log('increment');
-  yield put(getincrement());
-}
-
-function* decrement() {
-  console.log('decrement');
-  yield put(getdecrement());
-}
-
 function* CartSaga() {
   yield takeLatest(GET_POSTS, onGetPosts);
-  yield takeLatest(Increment_Type, increment);
-  yield takeLatest(Decrement_Type, decrement);
 }
 
 export default CartSaga;
