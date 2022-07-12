@@ -5,8 +5,7 @@ import './style.css';
 import { useDispatch, useSelector } from 'react-redux';
 // import { decrement, increment,selectCount,selectPost,incrementAsync,fetchAsyncPost } from './reducers/index';
 
-import { Increment_Type,Decrement_Type  } from './saga/post/actionTypes';
-import { getPosts  } from './saga/post/actions';
+import { getPosts, getIncrement, getDecrement } from './saga/post/actions';
 
 export default function App() {
   const count = useSelector((state) => {
@@ -21,7 +20,8 @@ export default function App() {
 
   const countIncrement = useCallback(() => {
     try {
-      dispatch({type:Increment_Type});
+     
+      dispatch(getIncrement());
     } catch (e) {
       console.log(e);
     }
@@ -29,7 +29,7 @@ export default function App() {
 
   const countDecrement = useCallback(() => {
     try {
-      dispatch({type:Decrement_Type});
+      dispatch(getDecrement());
     } catch (e) {
       console.log(e);
     }

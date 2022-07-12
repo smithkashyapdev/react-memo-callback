@@ -1,8 +1,26 @@
-import { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAIL } from './actionTypes';
+import {
+  GET_POSTS,
+  GET_POSTS_SUCCESS,
+  Increment_Type,
+  Decrement_Type,
+  GET_POSTS_FAIL,
+} from './actionTypes';
 
 export const getPosts = () => {
   return {
     type: GET_POSTS,
+  };
+};
+
+export const getIncrement = () => {
+  return {
+    type: Increment_Type,
+  };
+};
+
+export const getDecrement = () => {
+  return {
+    type: Decrement_Type,
   };
 };
 
