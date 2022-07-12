@@ -2,19 +2,19 @@ import {
   GET_POSTS,
   GET_POSTS_SUCCESS,
   GET_POSTS_FAIL,
-  Increment,
-  Decrement,
+  Increment_Type,
+  Decrement_Type,
 } from './actionTypes';
 
 export const increment = () => {
   return {
-    type: Increment,
+    type: Increment_Type,
   };
 };
 
 export const decrement = () => {
   return {
-    type: Decrement,
+    type: Decrement_Type,
   };
 };
 

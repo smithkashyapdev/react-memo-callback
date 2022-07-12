@@ -2,8 +2,8 @@ import {
   GET_POSTS,
   GET_POSTS_SUCCESS,
   GET_POSTS_FAIL,
-  Increment,
-  Decrement,
+  Increment_Type,
+  Decrement_Type,
 } from './actionTypes';
 
 const initialState = {
@@ -35,13 +35,13 @@ const PostReducer = (state = initialState, action) => {
       };
       break;
 
-    case Increment: {
+    case Increment_Type: {
       const count = state.count + 1;
       state = { ...state, count };
       break;
     }
 
-    case Decrement: {
+    case Decrement_Type: {
       const count = state.count - 1;
       state = { ...state, count };
       break;
@@ -51,6 +51,7 @@ const PostReducer = (state = initialState, action) => {
       state = { ...state };
       break;
   }
+  console.log('reducer->',state)
   return state;
 };
 
