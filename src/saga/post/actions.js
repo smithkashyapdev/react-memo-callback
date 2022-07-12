@@ -6,13 +6,13 @@ import {
   Decrement_Type,
 } from './actionTypes';
 
-export const increment = () => {
+export const getincrement = () => {
   return {
     type: Increment_Type,
   };
 };
 
-export const decrement = () => {
+export const getdecrement = () => {
   return {
     type: Decrement_Type,
   };

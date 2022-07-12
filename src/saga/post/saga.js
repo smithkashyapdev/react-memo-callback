@@ -5,8 +5,8 @@ import { GET_POSTS, Increment_Type, Decrement_Type } from './actionTypes';
 import {
   getPostsSuccess,
   getPostsFail,
-  getPostDetailsSuccess,
-  getPostDetailsFail,
+  getincrement,
+  getdecrement,
 } from './actions';
 
 import { URL_GET_ALL_POST } from '../../utils/constants';
@@ -24,13 +24,13 @@ function* onGetPosts() {
 }
 
 function* increment() {
-  console.log('increment')
-  yield put(Increment_Type);
+  console.log('increment');
+  yield put(getincrement());
 }
 
 function* decrement() {
-  console.log('decrement')
-  yield put(Decrement_Type);
+  console.log('decrement');
+  yield put(getdecrement());
 }
 
 function* CartSaga() {
