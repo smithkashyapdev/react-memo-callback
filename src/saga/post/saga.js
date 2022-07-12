@@ -19,6 +19,7 @@ function* onGetPosts() {
 }
 
 function* CartSaga() {
+  console.log('saga','watcher')
   yield takeLatest(GET_POSTS, onGetPosts);
 }
 

@@ -36,6 +36,20 @@ const PostReducer = (state = initialState, action) => {
       };
       break;
 
+    case Increment_Type:
+      state = {
+        ...state,
+        count: 2,
+      };
+      break;
+
+    case Decrement_Type:
+      state = {
+        ...state,
+        count: 2,
+      };
+      break;
+
     default:
       state = { ...state };
       break;
