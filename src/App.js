@@ -47,6 +47,7 @@ export default function App() {
   //<Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
   return (
     <div>
+      <Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
       <button onClick={countIncrement.bind()}>increment</button>
       <button onClick={countDecrement.bind()}>decrement</button>
       <button onClick={() => dispatch(incrementAsync(Number(5) || 0))}>

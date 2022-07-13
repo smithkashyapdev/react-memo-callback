@@ -3,13 +3,13 @@ import './style.css';
 import { useSelector } from 'react-redux';
 
 export default function Child(props) {
-  const { posts, loadingPosts } = useSelector((state) => 
-  
-  {
-    console.log('child->',state)
-  return state
-  }
-  );
+  // const { posts, loadingPosts } = useSelector((state) =>
+
+  // {
+  //   console.log('child->',state)
+  // return state
+  // }
+  // );
 
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
@@ -20,26 +20,26 @@ export default function Child(props) {
     return `bar`;
   };
 
-  function getData(array) {
-    return new Promise(function (myResolve, myReject) {
-      // "Producing Code" (May take some time)
-      const extracted = array.map((object) => {
-        return { name: object.title };
-      });
-      myResolve(extracted); // when successful
-      myReject('Not extracted'); // when error
-    });
-  }
+  // function getData(array) {
+  //   return new Promise(function (myResolve, myReject) {
+  //     // "Producing Code" (May take some time)
+  //     const extracted = array.map((object) => {
+  //       return { name: object.title };
+  //     });
+  //     myResolve(extracted); // when successful
+  //     myReject('Not extracted'); // when error
+  //   });
+  // }
 
-  getData(posts).then(
-    function (value) {
-      setUsers(value.toString());
-      //console.log('pro', value);
-    },
-    function (error) {
-      /* code if some error */
-    }
-  );
+  // getData(posts).then(
+  //   function (value) {
+  //     setUsers(value.toString());
+  //     //console.log('pro', value);
+  //   },
+  //   function (error) {
+  //     /* code if some error */
+  //   }
+  // );
 
   //console.log('again render');
   return (
