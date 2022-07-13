@@ -20,7 +20,6 @@ export default function App() {
 
   const countIncrement = useCallback(() => {
     try {
-     
       dispatch(getIncrement());
     } catch (e) {
       console.log(e);
@@ -45,9 +44,9 @@ export default function App() {
     dispatch(getPosts());
   }, []);
 
+  //<Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
   return (
     <div>
-      <Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
       <button onClick={countIncrement.bind()}>increment</button>
       <button onClick={countDecrement.bind()}>decrement</button>
       <button onClick={() => dispatch(incrementAsync(Number(5) || 0))}>
