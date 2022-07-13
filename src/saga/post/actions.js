@@ -13,7 +13,9 @@ export const getPosts = () => {
 };
 
 export const getIncrement = () => {
-  return Increment_Type;
+  return {
+    type: Increment_Type,
+  };
 };
 
 export const getDecrement = () => {
