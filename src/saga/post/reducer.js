@@ -37,7 +37,9 @@ const PostReducer = (state = initialState, action) => {
       break;
 
     case Increment_Type:
-      state = { ...state };
+      const incre=state.count+1
+      console.log(initialState)
+      state = { ...state ,count:incre};
       break;
 
     case Decrement_Type:
