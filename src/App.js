@@ -39,6 +39,7 @@ export default function App() {
     return 4;
   }, []);
 
+  console.log('App render');
   useEffect(() => {
     console.log('useEffect');
     dispatch(getPosts());

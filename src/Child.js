@@ -1,8 +1,18 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import './style.css';
 import { useSelector } from 'react-redux';
 
 export default function Child(props) {
+  const { posts, count } = useSelector((state) => {
+    console.log('child-', state);
+    return state;
+  });
   // const { posts, loadingPosts } = useSelector((state) =>
 
   // {
@@ -14,11 +24,15 @@ export default function Child(props) {
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [users, setUsers] = useState([]);
-
-  const count = 2;
+  const inputEl = useRef(posts);
+  //const count = 2;
   const otherFoo = function () {
     return `bar`;
   };
+
+  const getPost = useMemo(() => {
+    return inputEl.current;
+  }, []);
 
   // function getData(array) {
   //   return new Promise(function (myResolve, myReject) {
@@ -31,7 +45,7 @@ export default function Child(props) {
   //   });
   // }
 
-  // getData(posts).then(
+  // getData(getPost).then(
   //   function (value) {
   //     setUsers(value.toString());
   //     //console.log('pro', value);

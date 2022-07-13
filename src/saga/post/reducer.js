@@ -18,7 +18,7 @@ const initialState = {
 };
 
 const PostReducer = (state = initialState, action) => {
-  console.log('action', state);
+  //console.log('action', state);
   switch (action.type) {
     case GET_POSTS:
       state = { ...state, loadingPosts: true };
@@ -51,7 +51,7 @@ const PostReducer = (state = initialState, action) => {
       state = { ...state };
       break;
   }
-  console.log('reducer->', state);
+  //console.log('reducer->', state);
   return state;
 };
 
