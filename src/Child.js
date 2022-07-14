@@ -24,36 +24,36 @@ export default function Child(props) {
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [users, setUsers] = useState([]);
-  const inputEl = useRef(posts);
+ 
   //const count = 2;
   const otherFoo = function () {
     return `bar`;
   };
 
   const getPost = useMemo(() => {
-    return inputEl.current;
+    return posts
   }, []);
 
-  // function getData(array) {
-  //   return new Promise(function (myResolve, myReject) {
-  //     // "Producing Code" (May take some time)
-  //     const extracted = array.map((object) => {
-  //       return { name: object.title };
-  //     });
-  //     myResolve(extracted); // when successful
-  //     myReject('Not extracted'); // when error
-  //   });
-  // }
+  function getData(array) {
+    return new Promise(function (myResolve, myReject) {
+      // "Producing Code" (May take some time)
+      const extracted = array.map((object) => {
+        return { name: object.title };
+      });
+      myResolve(extracted); // when successful
+      myReject('Not extracted'); // when error
+    });
+  }
 
-  // getData(getPost).then(
-  //   function (value) {
-  //     setUsers(value.toString());
-  //     //console.log('pro', value);
-  //   },
-  //   function (error) {
-  //     /* code if some error */
-  //   }
-  // );
+  getData(getPost).then(
+    function (value) {
+      setUsers(value.toString());
+      //console.log('pro', value);
+    },
+    function (error) {
+      /* code if some error */
+    }
+  );
 
   //console.log('again render');
   return (
@@ -61,7 +61,7 @@ export default function Child(props) {
       <h1>{props.name}</h1>
       <p>{count}</p>
       <p>{props.memo}</p>
-      <p>{users}</p>
+     
       <input
         type="number"
         onChange={(e) => {
