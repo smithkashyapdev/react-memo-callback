@@ -47,10 +47,11 @@ export default function Child(props) {
 
   getData(getPost).then(
     function (value) {
+      console.log('pro', value);
       setUsers(value.toString());
-      //console.log('pro', value);
     },
     function (error) {
+      console.log(error)
       /* code if some error */
     }
   );
