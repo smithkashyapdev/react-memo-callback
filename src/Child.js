@@ -9,20 +9,17 @@ import './style.css';
 import { useSelector } from 'react-redux';
 
 export default function Child(props) {
-
-  
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
-  const [user,setUser]=useState(props.postdata)
-  const [nameData,setNameData]=useState([])
-  console.log('child props',user)
+  const [nameData, setNameData] = useState([]);
+  console.log('child props', props.postdata);
   //const count = 2;
   const otherFoo = function () {
     return `bar`;
   };
 
-  useEffect(()=>{
-    console.log('--child','useEffect')
+  useEffect(() => {
+    console.log('--child', 'useEffect');
     function getData(array) {
       return new Promise(function (myResolve, myReject) {
         // "Producing Code" (May take some time)
@@ -34,26 +31,21 @@ export default function Child(props) {
       });
     }
 
-    getData(user).then(
+    getData(props.postdata).then(
       function (value) {
         console.log('pro', value);
         setNameData(value);
       },
       function (error) {
-        console.log(error)
+        console.log(error);
         /* code if some error */
       }
     );
-
-  },[user])
+  }, [props.postdata]);
 
   // const getPost = useMemo(() => {
   //   return posts
   // }, []);
-
- 
-
-  
 
   //console.log('again render');
   return (
@@ -61,7 +53,9 @@ export default function Child(props) {
       <h1>{props.name}</h1>
       <p>{props.count}</p>
       <p>{props.memo}</p>
-      {nameData.map(home => <div>{home.name}</div>)}
+      {nameData.map((home) => (
+        <div>{home.name}</div>
+      ))}
       <input
         type="number"
         onChange={(e) => {
