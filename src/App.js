@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, getIncrement, getDecrement } from './saga/post/actions';
 
 export default function App() {
-  const count = useSelector((state) => {
+  const {count,posts} = useSelector((state) => {
     console.log(state);
-    return state.count;
+    return state;
   });
   const dispatch = useDispatch();
   const callback = useCallback((a, b) => {
@@ -48,7 +48,7 @@ export default function App() {
   //<Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
   return (
     <div>
-      <Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
+      <Child name="smith" detail="B.tech" call={callback} memo={memo} count={count}postdata={posts}></Child>
       <button onClick={countIncrement.bind()}>increment</button>
       <button onClick={countDecrement.bind()}>decrement</button>
       <button onClick={() => dispatch(incrementAsync(Number(5) || 0))}>
