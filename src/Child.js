@@ -14,6 +14,7 @@ export default function Child(props) {
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [user,setUser]=useState(props.postdata)
+  const [nameData,setNameData]=useState([])
   console.log('child props',user)
   //const count = 2;
   const otherFoo = function () {
@@ -21,7 +22,7 @@ export default function Child(props) {
   };
 
   useEffect(()=>{
-
+    console.log('--child','useEffect')
     function getData(array) {
       return new Promise(function (myResolve, myReject) {
         // "Producing Code" (May take some time)
@@ -36,7 +37,7 @@ export default function Child(props) {
     getData(user).then(
       function (value) {
         console.log('pro', value);
-        setUsers(value.toString());
+        setNameData(value);
       },
       function (error) {
         console.log(error)
@@ -44,7 +45,7 @@ export default function Child(props) {
       }
     );
 
-  },[])
+  },[user])
 
   // const getPost = useMemo(() => {
   //   return posts
@@ -60,7 +61,7 @@ export default function Child(props) {
       <h1>{props.name}</h1>
       <p>{props.count}</p>
       <p>{props.memo}</p>
-      <p>{user}</p>
+      {nameData.map(home => <div>{home.name}</div>)}
       <input
         type="number"
         onChange={(e) => {
