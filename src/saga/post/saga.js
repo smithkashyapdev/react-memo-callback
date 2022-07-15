@@ -18,12 +18,6 @@ function* onGetPosts() {
   }
 }
 
-export function* incrementAsync() {
-  console.log('saga', 'incrementAsync');
-  yield put({ type: Increment_Type });
-  yield put({ type: Decrement_Type });
-}
-
 function* CartSaga() {
   console.log('saga', 'watcher');
   yield takeLatest(GET_POSTS, onGetPosts);
