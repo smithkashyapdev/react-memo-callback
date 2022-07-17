@@ -13,9 +13,9 @@ import { getPostsSuccess, getPostsFail } from './actions';
 import { URL_GET_ALL_POST } from '../../utils/constants';
 import { executeRequest } from '../../services/data-service';
 
-function* onGetPosts() {
+function* onGetPosts(action) {
   try {
-    console.log('--onGet', 'response');
+    console.log('--onGet', action);
     yield delay(5000);
     const response = yield call(executeRequest, URL_GET_ALL_POST);
     console.log('--onGet', response);
