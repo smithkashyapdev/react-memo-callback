@@ -8,7 +8,7 @@
     "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-native": ">=0.59",
+    "react-native": "^0.69.1",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-saga": "^1.1.3"
