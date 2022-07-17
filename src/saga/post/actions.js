@@ -6,9 +6,10 @@ import {
   GET_POSTS_FAIL,
 } from './actionTypes';
 
-export const getPosts = () => {
+export const getPosts = (a, b) => {
   return {
     type: GET_POSTS,
+    payload: { x: a, y: b },
   };
 };
 

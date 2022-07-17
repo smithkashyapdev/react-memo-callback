@@ -1,4 +1,4 @@
-import { takeLatest, put, takeEvery, delay } from 'redux-saga/effects';
+import { takeLatest, put, takeEvery, delay, call } from 'redux-saga/effects';
 
 import {
   GET_POSTS,
@@ -17,7 +17,7 @@ function* onGetPosts() {
   try {
     console.log('--onGet', 'response');
     yield delay(5000);
-    const response = yield executeRequest(URL_GET_ALL_POST);
+    const response = yield call(executeRequest, URL_GET_ALL_POST);
     console.log('--onGet', response);
     yield put(getPostsSuccess(response));
   } catch (error) {
@@ -29,7 +29,7 @@ function* increment() {
   try {
     yield delay(2000);
     console.log('delay');
-    yield put({type:Increment_SUCCESS_Type});
+    yield put({ type: Increment_SUCCESS_Type });
   } catch (e) {
     console.log(e);
   }
@@ -37,7 +37,7 @@ function* increment() {
 
 function* decrement() {
   yield delay(1000);
-  yield put({type:Decrement_SUCCESS_Type});
+  yield put({ type: Decrement_SUCCESS_Type });
 }
 
 function* CartSaga() {

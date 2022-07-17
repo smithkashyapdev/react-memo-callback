@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, getIncrement, getDecrement } from './saga/post/actions';
 
 export default function App() {
-  const {count,posts} = useSelector((state) => {
+  const { count, posts } = useSelector((state) => {
     console.log(state);
     return state;
   });
@@ -42,13 +42,20 @@ export default function App() {
   console.log('App render');
   useEffect(() => {
     console.log('useEffect');
-    dispatch(getPosts());
+    dispatch(getPosts(1, 2));
   }, []);
 
   //<Child name="smith" detail="B.tech" call={callback} memo={memo}></Child>
   return (
     <div>
-      <Child name="smith" detail="B.tech" call={callback} memo={memo} count={count}postdata={posts}></Child>
+      <Child
+        name="smith"
+        detail="B.tech"
+        call={callback}
+        memo={memo}
+        count={count}
+        postdata={posts}
+      ></Child>
       <button onClick={countIncrement.bind()}>increment</button>
       <button onClick={countDecrement.bind()}>decrement</button>
       <button onClick={() => dispatch(incrementAsync(Number(5) || 0))}>
