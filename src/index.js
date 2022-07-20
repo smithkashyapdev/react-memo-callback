@@ -4,7 +4,7 @@ import rootReducer from './reducers/index';
 import App from './App';
 import store from './saga/store';
 import { Provider } from 'react-redux';
-
+import HomeNavigator from './navigation/home'
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
