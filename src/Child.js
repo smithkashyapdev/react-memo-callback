@@ -12,7 +12,7 @@ export default function Child(props) {
   const [first, setFirstInput] = useState(0);
   const [second, setSecondInput] = useState(0);
   const [nameData, setNameData] = useState([]);
-  
+
   const valueFirstInputRef = useRef();
   const valueSecondInputRef = useRef();
   console.log('child props', props.postdata);
@@ -22,9 +22,12 @@ export default function Child(props) {
   };
 
   const handleClick = () => {
-    console.log('onClick',valueFirstInputRef.current.value);
-    console.log('onClick',valueSecondInputRef.current.value);
-    props.call(valueFirstInputRef.current.value, valueSecondInputRef.current.value)
+    console.log('onClick', valueFirstInputRef.current.value);
+    console.log('onClick', valueSecondInputRef.current.value);
+    props.call(
+      valueFirstInputRef.current.value,
+      valueSecondInputRef.current.value
+    );
   };
 
   useEffect(() => {
@@ -32,9 +35,11 @@ export default function Child(props) {
     function getData(array) {
       return new Promise(function (myResolve, myReject) {
         // "Producing Code" (May take some time)
-        const extracted = array.map((object) => {
-          return { name: object.title };
-        }).slice(0,10);
+        const extracted = array
+          .map((object) => {
+            return { name: object.title };
+          })
+          .slice(0, 5);
         myResolve(extracted); // when successful
         myReject('Not extracted'); // when error
       });
